@@ -1,0 +1,109 @@
+###Get the service document
+http://localhost:4004/odata/v4/EmployeeService
+ 
+###Get service metadata document
+http://localhost:4004/odata/v4/EmployeeService/$metadata
+
+###get all employee data
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+
+###	Get all the Employees whose name starts with ‘S’.
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$filter=contains(nameFirst,'S')
+
+###	Get the top 2 employees, use orderby salaryAmount.
+http://localhost:4004/odata/v4/Employees/EmployeeSet?$top=2
+
+###	CREATE an employee with salary <50000 & currency code USD.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Christiano",
+  "nameMiddle": "M",
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+918810504555",
+  "email": "chris.ronaldo@gmail.com",
+  "loginName": "CHRISRL",
+  "Currency_code": "USD",
+  "salaryAmount": 1000,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+ 
+
+###	CREATE an employee with salary >50000 & currency code USD.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Christiano",
+  "nameMiddle": "M",
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+918810504555",
+  "email": "chris.ronaldo@gmail.com",
+  "loginName": "CHRISRL",
+  "Currency_code": "USD",
+  "salaryAmount": 1000000,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+
+###	CREATE an employee with salary <50000 & currency code EUR.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Christiano",
+  "nameMiddle": "M",
+  "nameLast": "Ron",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+918810504555",
+  "email": "chris.ronaldo@gmail.com",
+  "loginName": "CHRISRL",
+  "Currency_code": "EUR",
+  "salaryAmount": 10000,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+
+ 
+###
+PATCH http://localhost:4004/odata/v4/CatalogService/employee/0332adaa-6a32-4802-b845-ec74f258a9a3
+Content-Type: application/json
+ 
+{
+    "bankId": "5100685",
+    "salaryAmount": 5549,
+    "Currency_code": "USD"
+}
+###
+ 
+PATCH http://localhost:4004/odata/v4/CatalogService/employee/0332adaa-6a32-4802-b845-ec74f258a9a3
+Content-Type: application/json
+ 
+{
+  "nameLast": "thusssss",
+  "nameInitials": null,
+  "currency_code":"USD"
+}
+
+
+###DElete employee data - DELETE
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/6b20f5f5-89a3-4bed-8d48-821d1b70b133
+ 
+###DElete employee data - DELETE-2
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/0c5e9d28-8d5b-4757-a0c0-74a2ed6b6534
+
+
+
